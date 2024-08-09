@@ -12,5 +12,5 @@ export interface ITodo {
     addTodo: (todo: ITodo) => void;
     toggleTodo: (id: string) => void;
     deleteTodo: (id: string) => void;  
-    editTodo: (id: string) => void;
+    editTodo: (editTodo: ITodo) => void;
   }

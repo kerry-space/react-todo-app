@@ -1,6 +1,8 @@
 import { ReactElement } from "react";
 import { ITodo } from '../interface';
 import { useTodoFunc } from "../hooks/useTodoFunc";
+import { useNavigate } from "react-router-dom";
+
 
 import "./Todo.css"
 
@@ -9,7 +11,9 @@ interface IPropTodo {
 }
 
 export function Todo({ todo }: IPropTodo): ReactElement {
-  const { toggleTodo, deleteTodo, editTodo } = useTodoFunc();
+  const { toggleTodo, deleteTodo } = useTodoFunc();
+  const navigate = useNavigate();
+
 
   return (
     <tr className={`todo-item ${todo.completed ? "completed" : ""}`}>
@@ -18,7 +22,7 @@ export function Todo({ todo }: IPropTodo): ReactElement {
       </td>
       <td>{todo.text}</td>
       <td>
-        <button className="edit-btn" onClick={() => editTodo(todo.id)}>
+        <button className="edit-btn" onClick={() =>   navigate(`/edit-todo/${todo.id}`)}>
           <i className="fas fa-edit"></i>
         </button>
       </td>
